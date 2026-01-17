@@ -1,0 +1,13 @@
+{
+  "config": {
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tokens": 4096,
+    "temperature": 1.0,
+    "mcp_servers": []
+  },
+  "task": "Explain what a generic agent is and how it can be used in software development.",
+  "context": {
+    "purpose": "educational",
+    "audience": "software developers"
+  }
+}

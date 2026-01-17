@@ -1,0 +1,18 @@
+{
+  "config": {
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tokens": 4096,
+    "temperature": 1.0,
+    "mcp_servers": [
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"],
+        "env": null
+      }
+    ]
+  },
+  "task": "List the files in the current directory and tell me what you see.",
+  "context": {
+    "note": "This example shows how to connect to an MCP filesystem server"
+  }
+}

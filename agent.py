@@ -185,13 +185,23 @@ class GenericAgent:
                         "content": response.content
                     })
                     
+                    # Serialize tool result if it's not already a string
+                    if isinstance(tool_result, str):
+                        result_content = tool_result
+                    else:
+                        try:
+                            result_content = json.dumps(tool_result)
+                        except (TypeError, ValueError):
+                            # If serialization fails, convert to string
+                            result_content = str(tool_result)
+                    
                     messages.append({
                         "role": "user",
                         "content": [
                             {
                                 "type": "tool_result",
                                 "tool_use_id": tool_use_block.id,
-                                "content": json.dumps(tool_result)
+                                "content": result_content
                             }
                         ]
                     })

@@ -62,12 +62,23 @@ def test_requirements():
     
     try:
         with open('requirements.txt', 'r') as f:
-            requirements = f.read()
+            lines = f.readlines()
+        
+        # Parse package names from requirements.txt
+        installed_packages = set()
+        for line in lines:
+            line = line.strip()
+            # Skip empty lines and comments
+            if not line or line.startswith('#'):
+                continue
+            # Extract package name (before >= or == or other version specifiers)
+            package_name = line.split('>=')[0].split('==')[0].split('[')[0].strip()
+            installed_packages.add(package_name)
         
         required_packages = ["anthropic", "mcp", "pydantic", "python-dotenv"]
         
         for package in required_packages:
-            if package in requirements:
+            if package in installed_packages:
                 print(f"  ✓ {package} - Found")
             else:
                 print(f"  ✗ {package} - Missing")

@@ -20,7 +20,7 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        # Add dependencies here
+        "fastmcp",  # Add MCP dependency
     ],
     extras_require={
         "dev": [
